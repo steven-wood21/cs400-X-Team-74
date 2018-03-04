@@ -1,6 +1,6 @@
 # X-Team 74 Style Guide
 
-<brief description of your team's opinion or philosophy regarding Style Guides>
+We want to stick to class code formatting as much as possible because it's what we are used to reading. Also, we emphasize readability over sexiness. This means all one line if statements and loops should be written out so it's easier to read.
 
 ## Naming conventions
 

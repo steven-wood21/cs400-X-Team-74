@@ -12,8 +12,8 @@ and missed deadlines.
 * We can utilize Trello to keep track and assign tasks
 
 ## How will we will track progress (and follow-up) on completion of tasks
-
-
+* We can use Trello's feature of setting due dates and planning out steps
+* We can use Trello to track what needs to be done, what is being worked on, and what has been completed
 
 ## How will will communicate difficulties with a task assigned to us
 

@@ -16,7 +16,17 @@ public interface NewInterface{}
 
 public class NewException extends Exception{}
 ```
-* fields
+* Fields, Methods, Parameters, and Local Variables:
+  * Start with a lower case letter, no spaces or underscores, distinguish words with capital letters
+```java
+<T> field1;
+<T> field2;
+
+public newMethod(<T> newParameter1, <T> newParameter2) {
+  <T> localVariable1;
+  <T> localVariable2;
+}
+```
 * methods
 * parameters
 * local variables

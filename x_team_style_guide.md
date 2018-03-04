@@ -4,7 +4,7 @@ We want to stick to class code formatting as much as possible because it's what 
 
 ## Naming conventions
 
-<brief statement describing your team's naming conventions>
+We want to generally follow accepted naming convention like UpperCamelCase, using underscores for spaces, etc. Generally, as long as a name isn't too generic and is clearly defined it is a good name
 
 ### Examples
 * interfaces

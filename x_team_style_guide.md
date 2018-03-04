@@ -27,9 +27,6 @@ public newMethod(<T> newParameter1, <T> newParameter2) {
   <T> localVariable2;
 }
 ```
-* methods
-* parameters
-* local variables
 * Instance Constants and Class Constants
   * Capitalize all letters in name. If more than one word, separate with an underscore.
 ```java

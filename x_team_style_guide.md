@@ -14,7 +14,7 @@ public class NewClass {}
 
 public interface NewInterface{}
 
-public Exception NewException{}
+public class NewException extends Exception{}
 ```
 * fields
 * methods

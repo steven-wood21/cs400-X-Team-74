@@ -23,6 +23,9 @@ and missed deadlines.
 * If we start assignments early we should be able to tell if we can complete it by the deadline, or if we need help
 * We shouldn't be afraid to ask eachother for help
 
+## How we will schedule meetings
+* We have made a group chat over text which makes communicating nearly instant. If we feel a meeting needs to be held then someone will ask in the chat. From there we will agree on a time and meeting place. Meetings will only take place if everyone can attend.
+
 
 
 

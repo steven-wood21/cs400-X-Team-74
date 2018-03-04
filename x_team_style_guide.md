@@ -7,14 +7,15 @@ We want to stick to class code formatting as much as possible because it's what 
 We want to generally follow accepted naming convention like UpperCamelCase, using underscores for spaces, etc. Generally, as long as a name isn't too generic and is clearly defined it is a good name
 
 ### Examples
-* Interfaces and Classes:
+* Interfaces, Classes, and Exception Types :
   * Start with a capital letter, and all new words should be capitalized
 ```java
 public class NewClass {}
 
 public interface NewInterface{}
+
+public Exception NewException{}
 ```
-* exception types
 * fields
 * methods
 * parameters

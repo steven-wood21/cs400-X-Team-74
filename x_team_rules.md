@@ -16,7 +16,7 @@ and missed deadlines.
 * We can use Trello to track what needs to be done, what is being worked on, and what has been completed
 
 ## How will will communicate difficulties with a task assigned to us
-
+We can use Canvas to make an announcment to the whole group to ask for help or notify that it will take longer than expected.
 
 
 ## How we will back up each other to ensure that deadlines are not missed

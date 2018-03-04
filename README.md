@@ -1,5 +1,4 @@
-# super-octo-system
-
+# cs400-X-Team-74
 1. Replace the repository name in the title above with the name of your team's GitHub repository for this exercise.
 2. Answer these questions
    * What are the GitHub usernames of your team members?

@@ -20,9 +20,12 @@ public interface NewInterface{}
 * parameters
 * local variables
 * Instance Constants and Class Constants
-  * Capitalize all letters in name
+  * Capitalize all letters in name. If more than one word, separate with an underscore.
 ```java
 public final SIZE = 10;
+
+public final SIZE_OF_SIDE = 25;
+
 ```
 ## Commenting style for public and private members of a class or interface:
 

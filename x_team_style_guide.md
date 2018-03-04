@@ -19,7 +19,18 @@ We want to generally follow accepted naming convention like UpperCamelCase, usin
 
 ## Commenting style for public and private members of a class or interface:
 
-<brief statement of your team's commenting style>
+Use JavaDoc comments with two * on the first line. Here is an example:
+```java
+/**
+* This method does X
+* @param param1 - What param1 does
+* @return What method returns
+*/
+```
+For inline comments only a double slash should be used. Here is an example: 
+```java
+//Inline comment
+```
 
 ### Examples
 

@@ -19,9 +19,11 @@ public interface NewInterface{}
 * methods
 * parameters
 * local variables
-* instance constants
-* class constants
-
+* Instance Constants and Class Constants
+  * Capitalize all letters in name
+```java
+public final SIZE = 10;
+```
 ## Commenting style for public and private members of a class or interface:
 
 Use JavaDoc comments with two * on the first line. Here is an example:

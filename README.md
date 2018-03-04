@@ -8,6 +8,7 @@
        * GitHub username 4: zacwille22
        * GitHub username 5: steven-wood21
    * When did you complete this exercise? 
+       * March 4th
    * How long did it take your team to complete this exercise? 
 
 ## Table of Contents

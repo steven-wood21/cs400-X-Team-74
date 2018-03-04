@@ -37,7 +37,8 @@ public final SIZE_OF_SIDE = 25;
 ```
 ## Commenting style for public and private members of a class or interface:
 
-Use JavaDoc comments with two * on the first line. Here is an example:
+Use JavaDoc comments with two * on the first line. JavaDocs should be used for classes, constructors, and methods.
+Here is an example:
 ```java
 /**
 * This method does X
@@ -45,9 +46,12 @@ Use JavaDoc comments with two * on the first line. Here is an example:
 * @return What method returns
 */
 ```
-For inline comments only a double slash should be used. Here is an example: 
+For inline comments only a double slash should be used for shorter comments. Longer blocks of comments should use the commenting block. Use these for anything other than classes, constructors, and methods. Here is an example: 
 ```java
 //Inline comment
+/*
+*This also works too
+*/
 ```
 
 ### Examples

@@ -28,7 +28,7 @@ and missed deadlines.
 
 ## How we will make sure everyone does equal parts
 * At the beginning we will assign equal parts in terms of time and difficulty.
-* If someone needs help we will not code it for them, but assist in understanding the conecpts instead.
+* If someone needs help we will not code it for them, but assist in understanding the concepts instead.
 
 
 

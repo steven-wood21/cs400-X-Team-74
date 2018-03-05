@@ -61,7 +61,7 @@ For inline comments only a double slash should be used for shorter comments. Lon
 * constructors
 * methods
 * coding style (brackets, horizontal, and vertical spacing) for:
-  * if statements: let the bracket follow with the if statement in the same line and then hit ENTER:<br>
+  * if statements: 
   ```java
   if (1 == 0) { 
        System.out.print("Hello World");

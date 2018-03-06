@@ -1,6 +1,6 @@
 # X-Team 74 Style Guide
 
-We want to stick to class code formatting as much as possible because it's what we are used to reading. Also, we emphasize readability over sexiness. This means all one line if statements and loops should be written out so it's easier to read.
+We want to stick to class code formatting as much as possible because it's what we are used to writing. Our main philosihpy is to emphasize readability over shortness of code. This means all if statements and loops should have brackets with code on the next line (even if the code is a one-liner). Also, a significant convention is to have the first bracket on the same line as the declaration (see class example).
 
 ## Naming conventions
 

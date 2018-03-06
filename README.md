@@ -10,7 +10,7 @@
    * When did you complete this exercise? 
        * March 4th
    * How long did it take your team to complete this exercise? 
-
+       * Around an hour
 ## Table of Contents
 
 1. TODO.md - contains instructions for what to do for this assignment

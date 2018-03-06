@@ -10,11 +10,17 @@ We want to generally follow accepted naming convention like UpperCamelCase, usin
 * Interfaces, Classes, and Exception Types :
   * Start with a capital letter, and all new words should be capitalized
 ```java
-public class NewClass {}
+public class NewClass{
 
-public interface NewInterface{}
+}
 
-public class NewException extends Exception{}
+public interface NewInterface{
+
+}
+
+public class NewException extends Exception{
+
+}
 ```
 * Fields, Methods, Parameters, and Local Variables:
   * Start with a lower case letter, no spaces or underscores, distinguish words with capital letters
@@ -103,13 +109,13 @@ For inline comments only a double slash should be used for shorter comments. Lon
   * for loops
   ```java
   for (initialization; condition; increment/decrement) { 
-      statement(s); 
+      //code
   } 
   ```
   * enhanced for loops
   ```java
-  for (String element : array) { //code 
-      statement(s);
+  for (String element : array) {
+      //code 
   }
   ```
 

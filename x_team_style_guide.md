@@ -57,9 +57,27 @@ For inline comments only a double slash should be used for shorter comments. Lon
 ### Examples
 
 * classes
+```java
+  public class MyClass {
+      //Class code
+  }
+  ```
 * fields
+```java
+  public int myInt;
+  ```
 * constructors
+```java
+  public Car(T obj){
+      //Constructor code
+  }
+  ```
 * methods
+```java
+  public void newMethod(T obj){
+      //Method code
+  }
+  ```
 * coding style (brackets, horizontal, and vertical spacing) for:
   * if statements: 
   ```java

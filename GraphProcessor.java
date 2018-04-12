@@ -64,8 +64,22 @@ public class GraphProcessor {
      * @return Integer the number of vertices (words) added
      */
     public Integer populateGraph(String filepath) {
-        return 0;
-    
+        Stream<String> stream = null;
+        try {
+            stream = WordProcessor.getWordStream(filepath);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        ArrayList<String> streamToList =  stream.collect(Collectors.toCollection(ArrayList::new));
+        for(int i=0;i<streamToList.size();i++){
+            graph.addVertex(streamToList.get(i));
+        }
+        for(int i=0;i<streamToList.size();i++){
+            for(int j=i+1;j< streamToList.size();j++){
+                graph.addEdge(streamToList.get(i), streamToList.get(j));
+            }
+        }
+        return streamToList.size();
     }
 
     

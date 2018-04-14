@@ -71,10 +71,6 @@ public class Graph<E> implements GraphADT<E> {
     public E addVertex(E vertex) {
     	if ((vertex != null) && !(vertices.containsValue(vertex))) {
         	vertices.put(vertex, new Vertex<>(vertex));
-        	
-        	for (E i : getAllVertices()) {
-        		addEdge(vertex, i);
-        	}
         	return vertex;
         } else return null;
     }
@@ -148,7 +144,7 @@ public class Graph<E> implements GraphADT<E> {
      */
     @Override
     public Iterable<E> getAllVertices() {
-        return Iterator(vertices);  //Still need to do
+        return vertices.keySet();  
     }
 
 }

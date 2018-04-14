@@ -33,11 +33,12 @@ public class Graph<E> implements GraphADT<E> {
 	HashMap<E, Vertex<E>> vertices = new HashMap<>(); 
 	ArrayList<Edge> neighbors = new ArrayList<>();
 	
-    /**
-     * Instance variables and constructors
-     */
+	/**
+	 * This Vertex class is inside of 
+	 */
     public class Vertex<E>{
         private E element;
+        private E predecessor = null;
 
         public Vertex(E element){
             this.element = element;
@@ -49,6 +50,14 @@ public class Graph<E> implements GraphADT<E> {
 
         public void setElement(E element){
             this.element = element;
+        }
+        
+        public void setPredecessor(E predecessor) {
+        	this.predecessor = predecessor;
+        }
+        
+        public E getPredecessor() {
+        	return predecessor;
         }
     }
 

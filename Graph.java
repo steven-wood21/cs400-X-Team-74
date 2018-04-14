@@ -5,6 +5,20 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
+/////////////////////////////////////////////////////////////////////////////
+//Semester:         CS400 Spring 2018
+//PROJECT:          CS400_Program2
+//FILES:            Graph.java, GraphADT.java, GraphProcessor.java, 
+//					GraphTest.java, WordProcessor.java
+//
+//USER:             sdwood3, adwinter, yxu368, jwindorf, zwille
+//
+//Instructor:       Deb Deppeler (deppeler@cs.wisc.edu)
+//Bugs:             No known bugs
+//
+//2018 Apr 14, 2018 Graph.java
+////////////////////////////80 columns wide //////////////////////////////////
+
 /**
  * Undirected and unweighted graph implementation
  * 
@@ -16,7 +30,7 @@ import java.util.Set;
 
 public class Graph<E> implements GraphADT<E> {
     
-	HashMap<E, Vertex<E>> vertices = new HashMap<>();
+	HashMap<E, Vertex<E>> vertices = new HashMap<>(); 
 	ArrayList<Edge> neighbors = new ArrayList<>();
 	
     /**

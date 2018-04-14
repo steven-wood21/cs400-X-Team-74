@@ -85,8 +85,7 @@ public class Graph<E> implements GraphADT<E> {
     			if (isAdjacent(vertex, i)) {
     				removeEdge(vertex, i);
     			}
-    		}
-    		
+    		}    		
     		vertices.remove(vertex);
     		return vertex;
     	} else return null;
@@ -111,9 +110,14 @@ public class Graph<E> implements GraphADT<E> {
     public boolean removeEdge(E vertex1, E vertex2) {
     	if ((vertices.containsKey(vertex1) && vertices.containsKey(vertex2)) 
     			&& !(vertex1.equals(vertex2))) {
-    		for (Edge i : neighbors) {
-    			if ((i.getDestination().equals(vertex1) && i.getSource().equals(vertex2)) || 
-    					(i.getSource().equals(vertex1) && i.getDestination().equals(vertex1))) {
+//    		for (Edge i : neighbors) {
+//    			if ((i.getDestination().equals(vertex1) && i.getSource().equals(vertex2)) || 
+//    					(i.getSource().equals(vertex1) && i.getDestination().equals(vertex1))) {
+//    				neighbors.remove(i);
+//    			}
+    		for (int i = 0; i < neighbors.size(); i++) {
+    			if ((neighbors.get(i).getDestination().equals(vertex1) && neighbors.get(i).getSource().equals(vertex2)) || 
+    					(neighbors.get(i).getSource().equals(vertex1) && neighbors.get(i).getDestination().equals(vertex1))) {
     				neighbors.remove(i);
     			}
     		}

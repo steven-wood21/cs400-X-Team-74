@@ -12,11 +12,11 @@ import java.util.Set;
  * @author sapan (sapan@cs.wisc.edu)
  * 
  */
-//new comment
+
 public class Graph<E> implements GraphADT<E> {
     
 	HashMap<E, Vertex<E>> vertices = new HashMap<>();
-	protected List<List<Vertex<E>>> neighbors = new ArrayList<>();
+	ArrayList<Edge> neighbors = new ArrayList<>();
 	
     /**
      * Instance variables and constructors
@@ -70,7 +70,7 @@ public class Graph<E> implements GraphADT<E> {
     @Override
     public E addVertex(E vertex) {
     	if ((vertex != null) && !(vertices.containsValue(vertex))) {
-        	vertices.put(vertex, new Node<>(vertex));
+        	vertices.put(vertex, new Vertex<>(vertex));
         	
         	for (E i : getAllVertices()) {
         		addEdge(vertex, i);
@@ -103,7 +103,7 @@ public class Graph<E> implements GraphADT<E> {
     public boolean addEdge(E vertex1, E vertex2) {
     	if ((vertices.containsValue(vertex1) && vertices.containsValue(vertex2)) 
     			&& !(vertex1.equals(vertex2))) {
-    		//Still need to do
+    		neighbors.add(new Edge(vertices.get(vertex1), vertices.get(vertex2)));
     	} return false;
     }    
 

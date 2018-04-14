@@ -87,15 +87,20 @@ public class Graph<E> implements GraphADT<E> {
      */
     @Override
     public E removeVertex(E vertex) {
-    	if ((vertex != null) && (vertices.containsKey(vertex))) {
-    		Iterator<Edge> i = neighbors.iterator();
+    	if ((vertex != null) && !(vertices.containsKey(vertex))) {
+    		Iterator<Graph<E>.Edge> i = neighbors.iterator();
     		
     		while (i.hasNext()) {
     			Edge e = i.next();
     			if (e.contains(vertex)) {
     				i.remove();
     			}
-    		}   		
+    		}
+//    		for (int i = 0; i < neighbors.size(); i++) {
+//    			if (neighbors.get(i).contains(vertex)) {
+//    				neighbors.remove(i);
+//    			}
+//    		}    		
     		vertices.remove(vertex);
     		return vertex;
     	} return null;

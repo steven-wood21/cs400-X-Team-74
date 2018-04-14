@@ -64,6 +64,7 @@ public class WordProcessor {
          * 		streamOfLines.map(...).filter(a -> ...).map(...) and so on
          */
         try {
+            //Code we learned in class about streams
             Stream<String> stream = Files.lines(Paths.get(filepath));
             stream = stream.map(String::trim);
             stream = stream.filter(x -> x != null && !x.equals(""));
@@ -124,19 +125,24 @@ public class WordProcessor {
                 return true;
             }
         } else {
-            for (int lcv = 0; lcv < smallest.length(); lcv++) {
-                String smallBit = smallest.substring(lcv, lcv + 1);
+            int cnt = 0;
+            for (int lcv = 0; lcv < smallest.length() +1; lcv++) {
+                String smallBit = smallest.substring(cnt, cnt + 1);
                 String largeBit = longest.substring(lcv, lcv + 1);
                 if (smallBit.equals(largeBit)) {
                     simCount++;
+                    if (cnt + 1 == smallest.length()) {
+                        break;
+                    }
+                    cnt++;
+                } else if (cnt + 2 < smallBit.length() - 1) {
+                    cnt += 2;
                 }
             }
             if (simCount >= smallest.length()) {
                 return true;
             }
         }
-
         return false;
     }
-
 }

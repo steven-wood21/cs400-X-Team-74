@@ -109,7 +109,7 @@ public class Graph<E> implements GraphADT<E> {
      */
     @Override
     public boolean removeEdge(E vertex1, E vertex2) {
-    	if ((vertices.containsValue(vertex1) && vertices.containsValue(vertex2)) 
+    	if ((vertices.containsKey(vertex1) && vertices.containsKey(vertex2)) 
     			&& !(vertex1.equals(vertex2))) {
     		for (Edge i : neighbors) {
     			if ((i.getDestination().equals(vertex1) && i.getSource().equals(vertex2)) || 

@@ -1,5 +1,7 @@
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -13,6 +15,9 @@ import java.util.Set;
 //new comment
 public class Graph<E> implements GraphADT<E> {
     
+	HashMap<E, Vertex<E>> vertices = new HashMap<>();
+	protected List<List<Vertex<E>>> neighbors = new ArrayList<>();
+	
     /**
      * Instance variables and constructors
      */
@@ -28,32 +33,32 @@ public class Graph<E> implements GraphADT<E> {
         }
 
         public void setElement(E element){
-            this.element = element
+            this.element = element;
         }
     }
 
 
     public class Edge{
         private Vertex source;
-        private Vertex destination
+        private Vertex destination;
 
         public Edge(Vertex source, Vertex destination){
             this.source = source;
             this.destination = destination;
         }
 
-        public Node getDestination() {
+        public Vertex getDestination() {
             return destination;
         }
 
-        public void setDestination(Node destination) {
+        public void setDestination(Vertex destination) {
             this.destination = destination;
         }
-        public Node getSource() {
+        public Vertex getSource() {
             return source;
         }
 
-        public void setSource(Node source) {
+        public void setSource(Vertex source) {
             this.source = source;
         }
 
@@ -64,75 +69,7 @@ public class Graph<E> implements GraphADT<E> {
      */
     @Override
     public E addVertex(E vertex) {
-        
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public E removeVertex(E vertex) {
-        
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public boolean addEdge(E vertex1, E vertex2) {
-        
-    }    
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public boolean removeEdge(E vertex1, E vertex2) {
-        
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public boolean isAdjacent(E vertex1, E vertex2) {
-        
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public Iterable<E> getNeighbors(E vertex) {
-        
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public Iterable<E> getAllVertices() {
-        
-    }
-
-}
-
-public class Graph<E> implements GraphADT<E> {
-    
-	HashMap<E, Node<E>> vertices = new HashMap<>();
-	protected List<List<Node<E>>> neighbors = new ArrayList<>();
-	
-	ArrayList<E> verticesList = ArrayList<vertices>;
-    /**
-     * Instance variables and constructors
-     */
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public E addVertex(E vertex) {
-        if ((vertex != null) && !(vertices.containsValue(vertex))) {
+    	if ((vertex != null) && !(vertices.containsValue(vertex))) {
         	vertices.put(vertex, new Node<>(vertex));
         	
         	for (E i : getAllVertices()) {
@@ -168,7 +105,7 @@ public class Graph<E> implements GraphADT<E> {
     			&& !(vertex1.equals(vertex2))) {
     		//Still need to do
     	} return false;
-    }   
+    }    
 
     /**
      * {@inheritDoc}
@@ -215,3 +152,4 @@ public class Graph<E> implements GraphADT<E> {
     }
 
 }
+

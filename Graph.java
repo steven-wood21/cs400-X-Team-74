@@ -1,5 +1,7 @@
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -10,9 +12,12 @@ import java.util.Set;
  * @author sapan (sapan@cs.wisc.edu)
  * 
  */
-//new comment
+
 public class Graph<E> implements GraphADT<E> {
     
+	HashMap<E, Vertex<E>> vertices = new HashMap<>();
+	ArrayList<Edge> neighbors = new ArrayList<>();
+	
     /**
      * Instance variables and constructors
      */
@@ -28,7 +33,7 @@ public class Graph<E> implements GraphADT<E> {
         }
 
         public void setElement(E element){
-            this.element = element
+            this.element = element;
         }
     }
 
@@ -42,18 +47,18 @@ public class Graph<E> implements GraphADT<E> {
             this.destination = destination;
         }
 
-        public Node getDestination() {
+        public Vertex getDestination() {
             return destination;
         }
 
-        public void setDestination(Node destination) {
+        public void setDestination(Vertex destination) {
             this.destination = destination;
         }
-        public Node getSource() {
+        public Vertex getSource() {
             return source;
         }
 
-        public void setSource(Node source) {
+        public void setSource(Vertex source) {
             this.source = source;
         }
 
@@ -64,7 +69,14 @@ public class Graph<E> implements GraphADT<E> {
      */
     @Override
     public E addVertex(E vertex) {
-        
+    	if ((vertex != null) && !(vertices.containsValue(vertex))) {
+        	vertices.put(vertex, new Vertex<>(vertex));
+        	
+        	for (E i : getAllVertices()) {
+        		addEdge(vertex, i);
+        	}
+        	return vertex;
+        } else return null;
     }
 
     /**
@@ -72,7 +84,16 @@ public class Graph<E> implements GraphADT<E> {
      */
     @Override
     public E removeVertex(E vertex) {
-        
+    	if ((vertex != null) && !(vertices.containsValue(vertex))) {
+    		for (E i : getAllVertices()) {
+    			if (isAdjacent(vertex, i)) {
+    				removeEdge(vertex, i);
+    			}
+    		}
+    		
+    		vertices.remove(vertex);
+    		return vertex;
+    	} else return null;
     }
 
     /**
@@ -80,7 +101,10 @@ public class Graph<E> implements GraphADT<E> {
      */
     @Override
     public boolean addEdge(E vertex1, E vertex2) {
-        
+    	if ((vertices.containsValue(vertex1) && vertices.containsValue(vertex2)) 
+    			&& !(vertex1.equals(vertex2))) {
+    		neighbors.add(new Edge(vertices.get(vertex1), vertices.get(vertex2)));
+    	} return false;
     }    
 
     /**
@@ -88,7 +112,10 @@ public class Graph<E> implements GraphADT<E> {
      */
     @Override
     public boolean removeEdge(E vertex1, E vertex2) {
-        
+    	if ((vertices.containsValue(vertex1) && vertices.containsValue(vertex2)) 
+    			&& !(vertex1.equals(vertex2))) {
+    		//Still need to do
+    	} return false;
     }
 
     /**
@@ -96,7 +123,14 @@ public class Graph<E> implements GraphADT<E> {
      */
     @Override
     public boolean isAdjacent(E vertex1, E vertex2) {
-        
+    	if ((vertices.containsValue(vertex1) && vertices.containsValue(vertex2)) 
+    			&& !(vertex1.equals(vertex2))) {
+	        for (E i : getNeighbors(vertex1)) {
+	        	if (i.equals(vertex2)) {
+	        		return true;
+	        	}
+	        } return false;
+    	} return false;
     }
 
     /**
@@ -104,7 +138,9 @@ public class Graph<E> implements GraphADT<E> {
      */
     @Override
     public Iterable<E> getNeighbors(E vertex) {
-        
+        if (!(vertex == null) && (vertices.containsValue(vertex))) {
+        	//Still need to do
+        } return null; 
     }
 
     /**
@@ -112,7 +148,8 @@ public class Graph<E> implements GraphADT<E> {
      */
     @Override
     public Iterable<E> getAllVertices() {
-        
+        return Iterator(vertices);  //Still need to do
     }
 
 }
+

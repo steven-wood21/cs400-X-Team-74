@@ -135,7 +135,16 @@ public class Graph<E> implements GraphADT<E> {
     @Override
     public Iterable<E> getNeighbors(E vertex) {
         if (!(vertex == null) && (vertices.containsValue(vertex))) {
-        	//Still need to do
+        	ArrayList<E> localNeighbors = new ArrayList<E>;
+        	
+        	for (Edge i : neighbors) {
+        		if (i.getDestination().getElement().equals(vertex)) {
+        			localNeighbors.add((E) i.getSource().getElement());
+        		} else if (i.getSource().getElement().equals(vertex)) {
+        			localNeighbors.add((E) i.getDestination().getElement());
+        		}
+        	}
+        	return localNeighbors;
         } return null; 
     }
 

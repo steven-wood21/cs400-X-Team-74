@@ -69,7 +69,7 @@ public class Graph<E> implements GraphADT<E> {
      */
     @Override
     public E addVertex(E vertex) {
-    	if ((vertex != null) && !(vertices.containsValue(vertex))) {
+    	if ((vertex != null) && !(vertices.containsKey(vertex))) {
         	vertices.put(vertex, new Vertex<>(vertex));
         	return vertex;
         } else return null;
@@ -80,7 +80,7 @@ public class Graph<E> implements GraphADT<E> {
      */
     @Override
     public E removeVertex(E vertex) {
-    	if ((vertex != null) && !(vertices.containsValue(vertex))) {
+    	if ((vertex != null) && !(vertices.containsKey(vertex))) {
     		for (E i : getAllVertices()) {
     			if (isAdjacent(vertex, i)) {
     				removeEdge(vertex, i);
@@ -97,9 +97,10 @@ public class Graph<E> implements GraphADT<E> {
      */
     @Override
     public boolean addEdge(E vertex1, E vertex2) {
-    	if ((vertices.containsValue(vertex1) && vertices.containsValue(vertex2)) 
+    	if ((vertices.containsKey(vertex1) && vertices.containsKey(vertex2)) 
     			&& !(vertex1.equals(vertex2))) {
     		neighbors.add(new Edge(vertices.get(vertex1), vertices.get(vertex2)));
+    		return true;
     	} return false;
     }    
 
@@ -110,7 +111,13 @@ public class Graph<E> implements GraphADT<E> {
     public boolean removeEdge(E vertex1, E vertex2) {
     	if ((vertices.containsValue(vertex1) && vertices.containsValue(vertex2)) 
     			&& !(vertex1.equals(vertex2))) {
-    		//Still need to do
+    		for (Edge i : neighbors) {
+    			if ((i.getDestination().equals(vertex1) && i.getSource().equals(vertex2)) || 
+    					(i.getSource().equals(vertex1) && i.getDestination().equals(vertex1))) {
+    				neighbors.remove(i);
+    			}
+    		}
+    		return true;
     	} return false;
     }
 
@@ -119,7 +126,7 @@ public class Graph<E> implements GraphADT<E> {
      */
     @Override
     public boolean isAdjacent(E vertex1, E vertex2) {
-    	if ((vertices.containsValue(vertex1) && vertices.containsValue(vertex2)) 
+    	if ((vertices.containsKey(vertex1) && vertices.containsKey(vertex2)) 
     			&& !(vertex1.equals(vertex2))) {
 	        for (E i : getNeighbors(vertex1)) {
 	        	if (i.equals(vertex2)) {
@@ -134,8 +141,8 @@ public class Graph<E> implements GraphADT<E> {
      */
     @Override
     public Iterable<E> getNeighbors(E vertex) {
-        if (!(vertex == null) && (vertices.containsValue(vertex))) {
-        	ArrayList<E> localNeighbors = new ArrayList<E>;
+        if (!(vertex == null) && (vertices.containsKey(vertex))) {
+        	ArrayList<E> localNeighbors = new ArrayList<E>();
         	
         	for (Edge i : neighbors) {
         		if (i.getDestination().getElement().equals(vertex)) {

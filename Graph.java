@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
@@ -61,6 +62,12 @@ public class Graph<E> implements GraphADT<E> {
         public void setSource(Vertex source) {
             this.source = source;
         }
+        
+        public boolean contains(E key) {
+        	if (key.equals(source.getElement()) || key.equals(destination.getElement())) {
+        		return true;
+        	} return false;
+        }
 
     }
 
@@ -72,7 +79,7 @@ public class Graph<E> implements GraphADT<E> {
     	if ((vertex != null) && !(vertices.containsKey(vertex))) {
         	vertices.put(vertex, new Vertex<>(vertex));
         	return vertex;
-        } else return null;
+        } return null;
     }
 
     /**
@@ -81,14 +88,22 @@ public class Graph<E> implements GraphADT<E> {
     @Override
     public E removeVertex(E vertex) {
     	if ((vertex != null) && !(vertices.containsKey(vertex))) {
-    		for (E i : getAllVertices()) {
-    			if (isAdjacent(vertex, i)) {
-    				removeEdge(vertex, i);
+    		Iterator<Graph<E>.Edge> i = neighbors.iterator();
+    		
+    		while (i.hasNext()) {
+    			Edge e = i.next();
+    			if (e.contains(vertex)) {
+    				i.remove();
     			}
-    		}    		
+    		}
+//    		for (int i = 0; i < neighbors.size(); i++) {
+//    			if (neighbors.get(i).contains(vertex)) {
+//    				neighbors.remove(i);
+//    			}
+//    		}    		
     		vertices.remove(vertex);
     		return vertex;
-    	} else return null;
+    	} return null;
     }
 
     /**
@@ -110,14 +125,9 @@ public class Graph<E> implements GraphADT<E> {
     public boolean removeEdge(E vertex1, E vertex2) {
     	if ((vertices.containsKey(vertex1) && vertices.containsKey(vertex2)) 
     			&& !(vertex1.equals(vertex2))) {
-//    		for (Edge i : neighbors) {
-//    			if ((i.getDestination().equals(vertex1) && i.getSource().equals(vertex2)) || 
-//    					(i.getSource().equals(vertex1) && i.getDestination().equals(vertex1))) {
-//    				neighbors.remove(i);
-//    			}
     		for (int i = 0; i < neighbors.size(); i++) {
-    			if ((neighbors.get(i).getDestination().equals(vertex1) && neighbors.get(i).getSource().equals(vertex2)) || 
-    					(neighbors.get(i).getSource().equals(vertex1) && neighbors.get(i).getDestination().equals(vertex1))) {
+    			if ((neighbors.get(i).getDestination().element.equals(vertex1) && neighbors.get(i).getSource().element.equals(vertex2)) || 
+    					(neighbors.get(i).getSource().element.equals(vertex1) && neighbors.get(i).getDestination().element.equals(vertex2))) {
     				neighbors.remove(i);
     			}
     		}

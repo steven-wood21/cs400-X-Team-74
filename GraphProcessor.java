@@ -90,7 +90,7 @@ public class GraphProcessor {
      * cat
      * rat
      * hat
-     * neat
+     * heat
      * wheat
      * kit
      * shortest path between cat and wheat is the following list of words:
@@ -150,7 +150,7 @@ public class GraphProcessor {
      * cat
      * rat
      * hat
-     * neat
+     * heat
      * wheat
      * kit
      * distance of the shortest path between cat and wheat, [cat, hat, heat, wheat]
@@ -161,7 +161,7 @@ public class GraphProcessor {
      * @return Integer distance
      */
     public Integer getShortestDistance(String word1, String word2) {
-        return getShortestPath(word1, word2).size();
+        return getShortestPath(word1, word2).size()-1;
     }
 
     /**

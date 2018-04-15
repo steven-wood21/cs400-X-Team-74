@@ -10,7 +10,21 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+/////////////////////////////////////////////////////////////////////////////
+//Semester:         CS400 Spring 2018
+//PROJECT:          p4  DictionaryGraph
+//FILES:            Graph.java, GraphADT.java, GraphProcessor.java,
+//					GraphTest.java, WordProcessor.java
 //
+//USER:             sdwood3, adwinter, yxu368, jwindorf, zwille
+//
+//Instructor:       Deb Deppeler (deppeler@cs.wisc.edu)
+//Bugs:             No known bugs
+//Due:              April 16th, 2018
+//
+//2018 Apr 14, 2018 GraphProcessorTest.java
+/////////////////////////////////////////////////////////////////////////////
+
 public class GraphProcessorTest {
 	private static GraphProcessor grPro;
 	

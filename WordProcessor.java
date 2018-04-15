@@ -3,6 +3,22 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.stream.Stream;
 
+/////////////////////////////////////////////////////////////////////////////
+//Semester:         CS400 Spring 2018
+//PROJECT:          p4  DictionaryGraph
+//FILES:            Graph.java, GraphADT.java, GraphProcessor.java,
+//					GraphTest.java, WordProcessor.java
+//
+//USER:             sdwood3, adwinter, yxu368, jwindorf, zwille
+//
+//Instructor:       Deb Deppeler (deppeler@cs.wisc.edu)
+//Bugs:             No known bugs
+//Due:              April 16th, 2018
+//
+//2018 Apr 14, 2018 WordProcessor.java
+////////////////////////////80 columns wide //////////////////////////////////
+
+
 /**
  * This class contains some utility helper methods
  *
@@ -100,6 +116,7 @@ public class WordProcessor {
         String smallest;
         int simCount = 0;
 
+        //determines longer word
         if (length1 >= length2) {
             longest = word1;
             smallest = word2;
@@ -109,14 +126,17 @@ public class WordProcessor {
         }
         int dif = longest.length() - smallest.length();
 
+        //returns false if length difference is >=2 or the words are the same
         if ((dif >= 2) || longest.equals(smallest)) {
             return false;
         }
 
+        //algorithm for same-length words
         if (dif == 0) {
             for (int lcv = 0; lcv < smallest.length(); lcv++) {
                 String smallBit = smallest.substring(lcv, lcv + 1);
                 String largeBit = longest.substring(lcv, lcv + 1);
+                //if strings have same characters at a location, increment counter
                 if (smallBit.equals(largeBit)) {
                     simCount++;
                 }
@@ -125,8 +145,9 @@ public class WordProcessor {
                 return true;
             }
         } else {
+            //Algorithm for different length words
             int cnt = 0;
-            for (int lcv = 0; lcv < smallest.length() +1; lcv++) {
+            for (int lcv = 0; lcv < smallest.length() + 1; lcv++) {
                 String smallBit = smallest.substring(cnt, cnt + 1);
                 String largeBit = longest.substring(lcv, lcv + 1);
                 if (smallBit.equals(largeBit)) {
@@ -135,6 +156,8 @@ public class WordProcessor {
                         break;
                     }
                     cnt++;
+                    //if characters arent the same, skip ahead in the smaller word to maintain
+                    // location accuracy
                 } else if (cnt + 2 < smallBit.length() - 1) {
                     cnt += 2;
                 }

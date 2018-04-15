@@ -39,12 +39,14 @@ public class GraphProcessor {
      * Graph which stores the dictionary words and their associated connections
      */
     private GraphADT<String> graph;
+    private HashMap<String, HashMap<String, List<String>>> precomputation; //<Word1, <HashMap<Second Word2, shortestPath from word1 to word 2>>
 
     /**
      * Constructor for this class. Initializes instances variables to set the starting state of the object
      */
     public GraphProcessor() {
         this.graph = new Graph<>();
+        this.precomputation = new HashMap<String, HashMap<String, List<String>>>();
     }
 
     /**
@@ -170,6 +172,14 @@ public class GraphProcessor {
      * Any shortest path algorithm can be used (Djikstra's or Floyd-Warshall recommended).
      */
     public void shortestPathPrecomputation() {
-
+        Iterable<String> allVertices = graph.getAllVertices();
+        HashMap<String, List<String>> paths = new HashMap<String, List<String>>();
+        
+        for(String word1 : allVertices) { //Iterates through all vertices and gets shortest path to every word
+            for(String word2 : allVertices) { //Stores the List<String> Path of node to every word in graph
+                paths.put(word2, getShortestPath(word1, word2));
+            }
+            precomputation.put(word1, paths); //adds inner hashmap to outer hashmap
+        }
     }
 }

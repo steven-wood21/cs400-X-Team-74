@@ -31,14 +31,16 @@ public class GraphProcessorTest {
 	 */
 	@BeforeClass
 	public static void setUpBeforeClass() {
-		grPro = new GraphProcessor();
+
 	}
 	
 	@AfterClass
 	public static void tearDownAfterClass() {}
 
 	@Before
-	public void setUp() {}
+	public void setUp() {
+	       grPro = new GraphProcessor();
+	}
 	
 	@After
 	public void tearDown() {}
@@ -61,6 +63,7 @@ public class GraphProcessorTest {
 	@Test
 	public final void test02_getShortestPath_one_away() {
 		grPro.populateGraph("word_list.txt");
+        grPro.shortestPathPrecomputation();
 		ArrayList<String> actual = (ArrayList<String>) grPro.getShortestPath("BATH", "BASH");
 		ArrayList<String> expected = new ArrayList<String>();
 		expected.add("BATH");
@@ -77,6 +80,7 @@ public class GraphProcessorTest {
 	@Test
 	public final void test03_getShortestDistance_one_away() {
 		grPro.populateGraph("word_list.txt");
+        grPro.shortestPathPrecomputation();
 		Integer actual = grPro.getShortestDistance("BATH", "BASH");
 		Integer expected = 1;
 		if(! actual.equals(expected))
@@ -89,6 +93,7 @@ public class GraphProcessorTest {
 	@Test
 	public final void test04_getShortestPath_three_away() {
 		grPro.populateGraph("word_list.txt");
+        grPro.shortestPathPrecomputation();
 		ArrayList<String> actual = (ArrayList<String>) grPro.getShortestPath("BATH", "BEST");
 		ArrayList<String> expected = new ArrayList<String>();
 		expected.add("BATH");
@@ -107,6 +112,7 @@ public class GraphProcessorTest {
 	@Test
 	public final void test05_getShortestPath_unreachable() {
 		grPro.populateGraph("word_list.txt");
+        grPro.shortestPathPrecomputation();
 		ArrayList<String> actual = (ArrayList<String>) grPro.getShortestPath("BATH", "HETEROGENEOUS");
 		ArrayList<String> expected = null;
 		if(! (actual == expected))
@@ -119,6 +125,7 @@ public class GraphProcessorTest {
 	@Test
 	public final void test06_getShortestDistance_78_away() {
 		grPro.populateGraph("word_list.txt");
+        grPro.shortestPathPrecomputation();
 		Integer actual = grPro.getShortestDistance("CHARGE", "GIMLETS");
 		Integer expected = 78;
 		if(! expected.equals(actual))
@@ -131,6 +138,7 @@ public class GraphProcessorTest {
 	@Test
 	public final void test07_getShortestDistance_unreachable() {
 		grPro.populateGraph("word_list.txt");
+        grPro.shortestPathPrecomputation();
 		Integer actual;
 		try {
 			actual = grPro.getShortestDistance("BATH", "HETEROGENOUS"); 
@@ -145,6 +153,7 @@ public class GraphProcessorTest {
 	@Test
 	public final void test08_getShortestPath_same_word() {
 		grPro.populateGraph("word_list.txt");
+        grPro.shortestPathPrecomputation();
 		ArrayList<String> actual = (ArrayList<String>) grPro.getShortestPath("BATH", "BATH");
 		ArrayList<String> expected = new ArrayList<String>();
 		expected.add("BATH");
@@ -160,6 +169,7 @@ public class GraphProcessorTest {
 	@Test
 	public final void test09_getShortestDistance_same_word() {
 		grPro.populateGraph("word_list.txt");
+        grPro.shortestPathPrecomputation();
 		Integer actual = grPro.getShortestDistance("BATH", "BATH");
 		Integer expected = 0;
 		if(! actual.equals(expected))
@@ -204,6 +214,7 @@ public class GraphProcessorTest {
 	@Test
 	public final void test13_getShortestPath_given_nonexistant_vertices() {
 		grPro.populateGraph("word_list.txt");
+        grPro.shortestPathPrecomputation();
 		ArrayList<String> actual;
 		try {
 			actual = (ArrayList<String>) grPro.getShortestPath("BAT", "CAT");
@@ -220,6 +231,7 @@ public class GraphProcessorTest {
 	@Test
 	public final void test14_getShortestDistance_given_nonexistant_vertices() {
 		grPro.populateGraph("word_list.txt");
+        grPro.shortestPathPrecomputation();
 		Integer actual;
 		try {
 			actual = grPro.getShortestDistance("bat", "cat");

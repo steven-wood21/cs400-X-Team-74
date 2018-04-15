@@ -1,10 +1,25 @@
 import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.PriorityQueue;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
+/////////////////////////////////////////////////////////////////////////////
+//Semester:         CS400 Spring 2018
+//PROJECT:          CS400_Program2
+//FILES:            Graph.java, GraphADT.java, GraphProcessor.java, 
+//GraphTest.java, WordProcessor.java
+//
+//USER:             sdwood3, adwinter, yxu368, jwindorf, zwille
+//
+//Instructor:       Deb Deppeler (deppeler@cs.wisc.edu)
+//Bugs:             No known bugs
+//
+//2018 Apr 14, 2018 GraphProcessor.java
+////////////////////////////////////////////////////////////////////////////
 
 /**
  * This class adds additional functionality to the graph as a whole.

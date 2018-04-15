@@ -53,7 +53,7 @@ public class GraphProcessor {
     /**
      * Graph which stores the dictionary words and their associated connections
      */
-    private GraphADT<String> graph;
+    private GraphADT<String> graph; //The graph
     private HashMap<String, HashMap<String, List<String>>> precomputation; //<Word1, <HashMap<Second Word2, shortestPath from word1 to word 2>>
 
     /**
@@ -127,19 +127,19 @@ public class GraphProcessor {
         HashMap<String, String> previous =
                         new HashMap<String, String>(); //the key the current node and the value is the previous node
         PriorityQueue<String> pq = new PriorityQueue<String>();
-        ArrayList<String> Visited = new ArrayList<String>();
-        List<String> shortestPath = new ArrayList<String>();
+        ArrayList<String> Visited = new ArrayList<String>(); //Keeps track of words visited
+        List<String> shortestPath = new ArrayList<String>(); //Stores the path
         String current = word1;
         previous.put(word1, null);
         pq.add(word1);
         Visited.add(current);
         while (!pq.isEmpty()) {
             current = pq.remove();
-            if (current.equals(word2)) {
+            if (current.equals(word2)) { //Found word2, end the loop
                 break;
             } else {
                 for (String nextWord : graph.getNeighbors(current)) {
-                    if (!Visited.contains(nextWord)) {
+                    if (!Visited.contains(nextWord)) { //If the word hasn't been visited yet
                         pq.add(nextWord);
                         Visited.add(nextWord);
                         previous.put(nextWord, current);
@@ -149,7 +149,7 @@ public class GraphProcessor {
         }
 
         if (!current.equals(word2)) {
-            return null; //Gone through all of them but no path
+            return null; //Gone through all words but no path found
         }
 
         for (String word = word2; word != null; word = previous.get(word)) {
@@ -157,10 +157,15 @@ public class GraphProcessor {
         }
         return reverse(shortestPath);
     }
-
+    /**
+     * Reverses the List sent from shortestPath so that it goes from word1 to word 2
+     * instead of word2 to word1
+     * @param list
+     * @return
+     */
     private List<String> reverse(List<String> list) {
         List<String> reversed = new ArrayList<String>();
-        for (int last = list.size() - 1; last >= 0; last--) {
+        for (int last = list.size() - 1; last >= 0; last--) { //reverses list
             reversed.add(list.get(last));
         }
         return reversed;
@@ -197,7 +202,7 @@ public class GraphProcessor {
         HashMap<String, List<String>> paths = new HashMap<String, List<String>>();
         
         for(String word1 : allVertices) { //Iterates through all vertices and gets shortest path to every word
-            for(String word2 : allVertices) { //Stores the List<String> Path of node to every word in graph
+            for(String word2 : allVertices) { //Stores the List<String> Path of word1 to every word in graph
                 paths.put(word2, getShortestPath(word1, word2));
             }
             precomputation.put(word1, paths); //adds inner hashmap to outer hashmap

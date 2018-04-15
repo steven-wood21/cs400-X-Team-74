@@ -165,8 +165,9 @@ public class Graph<E> implements GraphADT<E> {
     @Override
     public E addVertex(E vertex) {
     	if ((vertex != null) && !(vertices.containsKey(vertex))) {
+    		
+    		//adding a new vertex to the HashMap
         	vertices.put(vertex, new Vertex<>(vertex)); 
-        		//adding a new vertex to the HashMap
         	return vertex;
         } return null;
     }

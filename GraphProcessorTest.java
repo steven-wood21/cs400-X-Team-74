@@ -21,8 +21,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
- * 
- *
+ * This class tests the GraphProcessor and WordProcessor classes using JUnit 4
  */
 public class GraphProcessorTest {
 	private static GraphProcessor grPro;

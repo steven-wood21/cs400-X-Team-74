@@ -4,6 +4,7 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.PriorityQueue;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -49,7 +50,7 @@ public class GraphProcessor {
     public GraphProcessor() {
         this.graph = new Graph<>();
     }
-        
+
     /**
      * Builds a graph from the words in a file. Populate an internal graph, by adding words from the dictionary as vertices
      * and finding and adding the corresponding connections (edges) between 
@@ -83,7 +84,7 @@ public class GraphProcessor {
         return streamToList.size();
     }
 
-    
+
     /**
      * Gets the list of words that create the shortest path between word1 and word2
      * 
@@ -102,10 +103,47 @@ public class GraphProcessor {
      * @return List<String> list of the words
      */
     public List<String> getShortestPath(String word1, String word2) {
-        return null;
-    
+        HashMap<String, String> previous = new HashMap<String, String>(); //the key the current node and the value is the previous node
+        PriorityQueue<String>pq = new PriorityQueue<String>();
+        ArrayList<String>Visited = new ArrayList<String>();
+        List<String> shortestPath = new ArrayList<String>();
+        String current = word1;
+        previous.put(word1, null);
+        pq.add(word1);
+        Visited.add(current);
+        while(!pq.isEmpty()) {
+            current = pq.remove();
+            if(current.equals(word2)) {
+                break;
+            }
+            else {
+                for(String nextWord : graph.getNeighbors(current)) {
+                    if(!Visited.contains(nextWord)) {
+                        pq.add(nextWord);
+                        Visited.add(nextWord);
+                        previous.put(nextWord, current);
+                    }
+                }
+            }
+        }
+        
+        if(!current.equals(word2)) {
+            return null; //Gone through all of them but no path
+        }
+        
+        for(String word = word2; word!=null; word = previous.get(word)) {
+            shortestPath.add(word);
+        }
+        return reverse(shortestPath);
     }
     
+    private List<String> reverse(List<String> list) {
+        List<String> reversed = new ArrayList<String>();
+        for(int last = list.size()-1; last>=0; last--) {
+            reversed.add(list.get(last));
+        }
+        return reversed;
+    }
     /**
      * Gets the distance of the shortest path between word1 and word2
      * 
@@ -124,15 +162,15 @@ public class GraphProcessor {
      * @return Integer distance
      */
     public Integer getShortestDistance(String word1, String word2) {
-        return null;
+        return getShortestPath(word1, word2).size();
     }
-    
+
     /**
      * Computes shortest paths and distances between all possible pairs of vertices.
      * This method is called after every set of updates in the graph to recompute the path information.
      * Any shortest path algorithm can be used (Djikstra's or Floyd-Warshall recommended).
      */
     public void shortestPathPrecomputation() {
-    
+        
     }
 }

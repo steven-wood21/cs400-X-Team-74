@@ -53,8 +53,8 @@ public class GraphProcessor {
     /**
      * Graph which stores the dictionary words and their associated connections
      */
-    private GraphADT<String> graph; //The graph
-    private HashMap<String, HashMap<String, List<String>>> precomputation; //<Word1, <HashMap<Second Word2, shortestPath from word1 to word 2>>
+    public GraphADT<String> graph; //The graph
+    public HashMap<String, HashMap<String, List<String>>> precomputation; //<Word1, <HashMap<Second Word2, shortestPath from word1 to word 2>>
 
     /**
      * Constructor for this class. Initializes instances variables to set the starting state of the object
@@ -87,12 +87,12 @@ public class GraphProcessor {
         }
         //Holds the strings found in stream in an ArrayList
         ArrayList<String> streamToList = stream.collect(Collectors.toCollection(ArrayList::new));
-        
+
         //Add all the elements in streamToList into the graph as vertexes
         for (int i = 0; i < streamToList.size(); i++) {
             graph.addVertex(streamToList.get(i));
         }
-        
+
         //Test every vertex against every vertex to see if they are adjacent. If true, then an edge is created
         //between the two
         for (int i = 0; i < streamToList.size(); i++) {
@@ -124,8 +124,30 @@ public class GraphProcessor {
      * @return List<String> list of the words
      */
     public List<String> getShortestPath(String word1, String word2) {
+        return precomputation.get(word1).get(word2);
+    }
+    /**
+     * Reverses the List sent from shortestPath so that it goes from word1 to word 2
+     * instead of word2 to word1
+     * @param list
+     * @return
+     */
+    private List<String> reverse(List<String> list) {
+        List<String> reversed = new ArrayList<String>();
+        for (int last = list.size() - 1; last >= 0; last--) { //reverses list
+            reversed.add(list.get(last));
+        }
+        return reversed;
+    }
+    /**
+     * Calculates the shortest path between word1 and word2
+     * @param word1
+     * @param word2
+     * @return
+     */
+    private List<String> computeShortestPath(String word1, String word2) {
         HashMap<String, String> previous =
-                        new HashMap<String, String>(); //the key the current node and the value is the previous node
+                new HashMap<String, String>(); //the key the current node and the value is the previous node
         PriorityQueue<String> pq = new PriorityQueue<String>();
         ArrayList<String> Visited = new ArrayList<String>(); //Keeps track of words visited
         List<String> shortestPath = new ArrayList<String>(); //Stores the path
@@ -158,20 +180,6 @@ public class GraphProcessor {
         return reverse(shortestPath);
     }
     /**
-     * Reverses the List sent from shortestPath so that it goes from word1 to word 2
-     * instead of word2 to word1
-     * @param list
-     * @return
-     */
-    private List<String> reverse(List<String> list) {
-        List<String> reversed = new ArrayList<String>();
-        for (int last = list.size() - 1; last >= 0; last--) { //reverses list
-            reversed.add(list.get(last));
-        }
-        return reversed;
-    }
-
-    /**
      * Gets the distance of the shortest path between word1 and word2
      * <p>
      * Example: Given a dictionary,
@@ -189,7 +197,7 @@ public class GraphProcessor {
      * @return Integer distance
      */
     public Integer getShortestDistance(String word1, String word2) {
-        return getShortestPath(word1, word2).size()-1;
+        return precomputation.get(word1).get(word2).size()-1;
     }
 
     /**
@@ -198,12 +206,14 @@ public class GraphProcessor {
      * Any shortest path algorithm can be used (Djikstra's or Floyd-Warshall recommended).
      */
     public void shortestPathPrecomputation() {
+
         Iterable<String> allVertices = graph.getAllVertices();
         HashMap<String, List<String>> paths = new HashMap<String, List<String>>();
-        
+
         for(String word1 : allVertices) { //Iterates through all vertices and gets shortest path to every word
+            paths = new HashMap<String, List<String>>();
             for(String word2 : allVertices) { //Stores the List<String> Path of word1 to every word in graph
-                paths.put(word2, getShortestPath(word1, word2));
+                paths.put(word2, computeShortestPath(word1, word2));
             }
             precomputation.put(word1, paths); //adds inner hashmap to outer hashmap
         }

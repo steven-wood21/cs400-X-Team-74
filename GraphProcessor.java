@@ -68,10 +68,16 @@ public class GraphProcessor {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        //Holds the strings found in stream in an ArrayList
         ArrayList<String> streamToList = stream.collect(Collectors.toCollection(ArrayList::new));
+        
+        //Add all the elements in streamToList into the graph as vertexes
         for (int i = 0; i < streamToList.size(); i++) {
             graph.addVertex(streamToList.get(i));
         }
+        
+        //Test every vertex against every vertex to see if they are adjacent. If true, then an edge is created
+        //between the two
         for (int i = 0; i < streamToList.size(); i++) {
             for (int j = i + 1; j < streamToList.size(); j++) {
                 if (WordProcessor.isAdjacent(streamToList.get(i), streamToList.get(j))) {

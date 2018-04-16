@@ -114,8 +114,8 @@ public class GraphProcessorTest {
 		grPro.populateGraph("word_list.txt");
         grPro.shortestPathPrecomputation();
 		ArrayList<String> actual = (ArrayList<String>) grPro.getShortestPath("BATH", "HETEROGENEOUS");
-		ArrayList<String> expected = null;
-		if(! (actual == expected))
+		ArrayList<String> expected = new ArrayList<String>();
+		if(! (actual.equals(expected)))
 			fail("Expected: " + expected + " Actual: " + actual);
 	}
 	
@@ -140,11 +140,11 @@ public class GraphProcessorTest {
 		grPro.populateGraph("word_list.txt");
         grPro.shortestPathPrecomputation();
 		Integer actual;
-		try {
-			actual = grPro.getShortestDistance("BATH", "HETEROGENOUS"); 
-		}
-		catch (NullPointerException e) {return;}
-		fail("Expected: NullPointerException Actual: " + actual);
+		Integer expected;
+		actual = grPro.getShortestDistance("BATH", "HETEROGENOUS"); 
+		expected = -1;
+        if(! expected.equals(actual))
+            fail("Expected: " + expected + " Actual: " + actual);
 	}
 	
 	/**
@@ -156,7 +156,6 @@ public class GraphProcessorTest {
         grPro.shortestPathPrecomputation();
 		ArrayList<String> actual = (ArrayList<String>) grPro.getShortestPath("BATH", "BATH");
 		ArrayList<String> expected = new ArrayList<String>();
-		expected.add("BATH");
 		for(int i = 0; i < expected.size(); i++) {
 			if(!(expected.get(i).equals(actual.get(i))))
 				fail("Expected: " + expected + " Actual: " + actual);
@@ -171,7 +170,7 @@ public class GraphProcessorTest {
 		grPro.populateGraph("word_list.txt");
         grPro.shortestPathPrecomputation();
 		Integer actual = grPro.getShortestDistance("BATH", "BATH");
-		Integer expected = 0;
+		Integer expected = -1;
 		if(! actual.equals(expected))
 			fail("Expected: " + expected + " Actual: " + actual);
 		

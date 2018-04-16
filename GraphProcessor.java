@@ -151,6 +151,9 @@ public class GraphProcessor {
         PriorityQueue<String> pq = new PriorityQueue<String>();
         ArrayList<String> Visited = new ArrayList<String>(); //Keeps track of words visited
         List<String> shortestPath = new ArrayList<String>(); //Stores the path
+        if(word1.equals(word2)) {
+            return shortestPath;
+        }
         String current = word1;
         previous.put(word1, null);
         pq.add(word1);
@@ -171,7 +174,7 @@ public class GraphProcessor {
         }
 
         if (!current.equals(word2)) {
-            return null; //Gone through all words but no path found
+            return shortestPath; //Gone through all words but no path found. Returns empty list
         }
 
         for (String word = word2; word != null; word = previous.get(word)) {
@@ -197,7 +200,10 @@ public class GraphProcessor {
      * @return Integer distance
      */
     public Integer getShortestDistance(String word1, String word2) {
-        return precomputation.get(word1).get(word2).size()-1;
+        if(precomputation.get(word1).get(word2) == null) {
+            return -1;
+        }
+        return precomputation.get(word1).get(word2).size()-1; //Returns -1 is no path or self edge
     }
 
     /**
